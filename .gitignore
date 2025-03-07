@@ -1,0 +1,5 @@
+# ignore .env file
+/srcs/.env
+
+# ignore secret folder
+/secrets
