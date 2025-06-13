@@ -4,7 +4,7 @@ RUN apt update && \
     apt upgrade -y && \
     mkdir -p /var/run/php && \
     chmod -R 755 /var/run/php && \
-    apt install sudo wget php7.3-fpm php-mysql mariadb-client procps zsh -y && \
+    apt install sudo wget php7.3-fpm php-mysql mariadb-client procps zsh vim -y && \
     php -v && \
     wget https://wordpress.org/wordpress-6.7.1.tar.gz -P /var/www && \
     cd /var/www && tar -xvf wordpress-6.7.1.tar.gz && rm wordpress-6.7.1.tar.gz && \

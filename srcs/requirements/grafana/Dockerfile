@@ -3,12 +3,10 @@ FROM debian:buster
 COPY conf/setup_grafana.sh setup_grafana.sh
 COPY conf/default_datasources.yaml /usr/share/grafana/conf/provisioning/datasources/default.yaml
 COPY conf/default_plugins.yaml /usr/share/grafana/conf/provisioning/plugins/default.yaml
-COPY conf/grafana /etc/nginx/sites-available-tmp/grafana
 
 ARG DOMAIN_NAME
 
-RUN sed -i "s/blank/grafana.${DOMAIN_NAME}/g" /etc/nginx/sites-available-tmp/grafana && \
-    apt-get update && \
+RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install -y sudo && \
     sudo apt-get install -y apt-transport-https software-properties-common wget sudo vim zsh procps gpg && \
