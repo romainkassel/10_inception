@@ -45,6 +45,7 @@ In order to follow the steps below, you have to install Docker packages first.
 
 > [!NOTE]
 > You find your `LOGIN` by running `echo $USER` in your terminal<br />
+> You can leave the variable `DB_HOST` as it is<br />
 > If you have any trouble at this step, please contact me!
 
 7. Still at the root of the repository, launch the project's build: `make`
