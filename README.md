@@ -77,6 +77,20 @@ To access it, you need to:
 
 <img width="1466" height="875" alt="inception-docker-wordpress-container" src="https://github.com/user-attachments/assets/a2d1864e-8811-4e1c-b8bd-9baffebf8a93" />
 
+### Redis cache
+
+Redis is a tool that allows to cache queries made to the database. Data is stored in memory, which helps optimise application performance.
+
+To see Redis in action, you need first to go to the Worpress administration login page: https://{DOMAIN_NAME}/wp-admin/ (for example: `https://rkassel.42.fr/wp-admin/`)
+
+Credentials are:
+- Username or Email Address: value of `ADMIN_USER` from the .env file
+- Password: content from `secrets/wp_admin_password.txt`
+
+Once on the administration, go to `Settings` > `Redis` and the `Metrics` tab to see data
+
+<img width="2940" height="1670" alt="inception-docker-redis-cache-container-wordpress" src="https://github.com/user-attachments/assets/df9fabe8-ba60-4a98-b7e8-bee5b80a5447" />
+
 ### Static website
 
 Go to the following URL: `https://{DOMAIN_NAME}/website/` (for example: `https://rkassel.42.fr/website/`)
@@ -108,6 +122,40 @@ Go to following URL: `https://{DOMAIN_NAME}/grafana/login` (for instance: `https
 You can log in by using the following credentials:
 - Email or username: value of `GRAFANA_USER` from the .env file
 - Password: content from `secrets/grafana_user_password.txt`
+
+### MariaDB
+
+To access the MariaDB database, you have 3 different choices:
+
+1. Use terminal by:
+  - Entering MariaDB shell container: `docker exec -it mariadb sh`
+  - Entering the MySQL Command-Line Client: `mysql -u root -p{password}` (the password being the content from `secrets/db_root_password.txt`
+
+2. Using Adminer interface (as seen above)
+
+3. Using Grafana and its data source attached to MariaDB
+
+<img width="2940" height="1670" alt="inception-docker-grafana-monitoring-container-mariadb-data-source" src="https://github.com/user-attachments/assets/a4b6b6c1-abc0-486a-88b5-6c9efe6432bc" />
+
+### FTP
+
+For this service, I used the FTP server `vsftpd`.
+
+To test it, you can:
+1. Download and launch `FileZilla`
+2. Click on the button `Open the site manager on the top left hand corner`
+3. Click on `New site` from the `My sites` folder
+4. Set `localhost` within the `Host` field
+5. Select the following option for `Encryption`: `Require explicit FTP over TLS
+6. Set the `User` field with the value of `FTP_USER` from the .env file
+7. Click on `Connect`
+8. Fill the password with the content from `secrets/ftp_user_password.txt`
+9. Click on `OK`
+10. Click on `OK` again
+
+And now you can manage files related to the Wordpress repository!
+
+<img width="1469" height="886" alt="inception-docker-ftp-server-container" src="https://github.com/user-attachments/assets/52a15b52-9b90-4251-8c3e-b6c399d45dfb" />
 
 ## I tested this site and I'm happy. Now I'd like to clean it up. What do I do?
 
