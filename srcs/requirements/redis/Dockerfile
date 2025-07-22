@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM debian:Bookworm
 
 COPY conf/setup_redis.sh setup_redis.sh
 
