@@ -5,10 +5,10 @@ all:
 	mkdir -p /home/${LOGIN}/data/wordpress
 	mkdir -p /home/${LOGIN}/data/adminer
 	mkdir -p /home/${LOGIN}/data/grafana
-	cd srcs/ && docker compose up --build -d
+	cd srcs/ && docker-compose up --build -d
 
 stop:
-	cd srcs/ && docker compose stop
+	cd srcs/ && docker-compose stop
 
 clean:	stop
 	docker system prune -af --volumes
