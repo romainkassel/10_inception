@@ -68,10 +68,46 @@ To access it, you need to:
   - Clicking on `Accept the risk and continue`
   - Searching for `network.dns.localDomains`
   - Updating `network.dns.localDomains` by adding your DOMAIN_NAME
-3. Go to the following URL: `https://{DOMAIN_NAME}:443` (for example: `https://rkassel.42.fr:443`
+3. Go to the following URL: `https://{DOMAIN_NAME}/` (for example: `https://rkassel.42.fr/`
 
-<img width="1466" height="914" alt="inception-wordpress-service" src="https://github.com/user-attachments/assets/e15aa2e2-8af5-4e08-a9e1-c6013ddd156b" />
+> [!NOTE]
+> You are warned that the site is not secure and it is true<br/>
+> I used the HTTPS protocol for this website and, as a student project, I have not submitted the SSL certificates for validation by an official authority<br/>
+> You can trust me and agree to continue browsing the website despite this warning!
 
+<img width="1466" height="875" alt="inception-docker-wordpress-container" src="https://github.com/user-attachments/assets/a2d1864e-8811-4e1c-b8bd-9baffebf8a93" />
+
+### Static website
+
+Go to the following URL: `https://{DOMAIN_NAME}/website/` (for example: `https://rkassel.42.fr/website/`)
+
+<img width="1467" height="875" alt="inception-docker-static-website-container" src="https://github.com/user-attachments/assets/7d85f5d3-41d7-4dc0-81bf-87c99b75501d" />
+
+### Adminer
+
+Go to the following URL: `https://{DOMAIN_NAME}/adminer` (for instance: `https://rkassel.42.fr/adminer`)
+
+<img width="1470" height="871" alt="inception-docker-adminer-login-container" src="https://github.com/user-attachments/assets/727b7d94-7baf-4538-9f43-721942a323ba" />
+
+To log in, you can use the following credentials:
+- System: `MySQL`
+- Server: `mariadb:3306`
+- User: value of `GRAFANA_USER` from the .env file
+- Password: content from `secrets/db_password.txt`
+- Database: value of `MYSQL_DATABASE` from the .env file
+
+### Grafana
+
+Grafana is a monitoring and observability tool.
+For this project, data sources come from Redis cache and MariaDB.
+
+Go to following URL: `https://{DOMAIN_NAME}/grafana/login` (for instance: `https://rkassel.42.fr/grafana/login`)
+
+<img width="1468" height="876" alt="inception-docker-grafana-monitoring-container" src="https://github.com/user-attachments/assets/fca94a9d-2b53-49ea-a8a4-5a860521ea34" />
+
+You can log in by using the following credentials:
+- Email or username: value of `GRAFANA_USER` from the .env file
+- Password: content from `secrets/grafana_user_password.txt`
 
 ## I tested this site and I'm happy. Now I'd like to clean it up. What do I do?
 
