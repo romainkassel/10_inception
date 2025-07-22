@@ -142,7 +142,7 @@ services:
                 DOMAIN_NAME: ${DOMAIN_NAME}
         image: grafana
         environment:
-        - GF_SERVER_ROOT_URL=https://13.51.64.253:443/grafana
+        - GF_SERVER_ROOT_URL=https://127.0.0.1:443/grafana
         - GF_SERVER_SERVE_FROM_SUB_PATH=true
         secrets:
         - grafana_user_password

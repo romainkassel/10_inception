@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 COPY conf/setup_redis.sh setup_redis.sh
 

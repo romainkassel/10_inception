@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 COPY /conf/setup_adminer.sh setup_adminer.sh
 

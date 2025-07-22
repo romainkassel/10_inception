@@ -1,17 +1,15 @@
 #!/bin/bash
 trap "exit" SIGINT SIGTERM
 
-service mysql start;
+service mariadb start;
 
 DB_ROOT_PASSWORD=`cat /run/secrets/db_root_password`;
 DB_PASSWORD=`cat /run/secrets/db_password`;
 
-mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD';"
+mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD';"
 
-mysql -u root -p$DB_ROOT_PASSWORD -e \
+mariadb -u root -p$DB_ROOT_PASSWORD -e \
 "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE;
-CREATE USER IF NOT EXISTS '$MYSQL_USER'@'localhost' IDENTIFIED BY '$DB_PASSWORD';
-GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'localhost' IDENTIFIED BY '$DB_PASSWORD';
 CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$DB_PASSWORD';
 GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$DB_PASSWORD';
 FLUSH PRIVILEGES;"

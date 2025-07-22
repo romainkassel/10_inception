@@ -21,8 +21,8 @@ mv wp-cli.phar /usr/local/bin/wp;
 wp --info
 
 sudo -u nobody wp db create --path=/var/www/wordpress;
-sudo -u nobody wp core install --path=/var/www/wordpress --url="13.51.64.253" --title="WP-INCEPTION" --admin_user=$ADMIN_USER --admin_password=$WP_ADMIN_PASSWORD --admin_email=$ADMIN_EMAIL;
+sudo -u nobody wp core install --path=/var/www/wordpress --url=$DOMAIN_NAME --title="WP-INCEPTION" --admin_user=$ADMIN_USER --admin_password=$WP_ADMIN_PASSWORD --admin_email=$ADMIN_EMAIL;
 sudo -u nobody wp user create $USER_USER $USER_EMAIL --user_pass=$WP_USER_PASSWORD --path=/var/www/wordpress;
 sudo -u nobody wp theme install saaslauncher --activate --path=/var/www/wordpress;
 
-exec /usr/sbin/php-fpm7.3 -F;
+exec /usr/sbin/php-fpm7.4 -F;
