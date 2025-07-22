@@ -49,20 +49,29 @@ In order to follow the steps below, you have to install Docker packages first.
 > If you have any trouble at this step, please contact me!
 
 7. Still at the root of the repository, launch the project's build: `make`
-8. Once the project has been built and services started, you should see something like this in your console:
+8. Once the project has been built and services started, you should see something like this in your terminal:
 
-<img width="609" alt="console_ft_transcendence_ecole_42" src="https://github.com/user-attachments/assets/15d7f571-553d-4ba2-aa9c-99670efd1af6" />
+<img width="345" height="202" alt="inception-docker-build-done" src="https://github.com/user-attachments/assets/399c1d6a-9c4e-4bf4-80fa-27a06d61eaf4" />
 
-9. Now you can open your favorite browser and go the following URL: `https://localhost:8080`
+9. Here you go! All services are now running and ready to be checked.
 
-> [!NOTE]
-> You are warned that the site is not secure and it is true<br/>
-> We used the HTTPS protocol for this website and, as a student project, we have not submitted the SSL certificates for validation by an official authority<br/>
-> You can trust us and agree to continue browsing our website despite this warning!
+## Services to access
 
-10. Here you go! If everything went smoothly, the site should be displayed and you can start exploring.
+### Wordpress
 
-<img width="1470" alt="page_login_ft_transcendence_ecole_42" src="https://github.com/user-attachments/assets/e958a5b3-6e7d-473c-950d-3c1559b810b2" />
+Wordpress is the most popular Content Management System (CMS) and is the main service of this projet.
+
+To access it, you need to:
+1. Open your favorite browser
+2. Add the DOMAIN_NAME you set up in the .env file to your browser by:
+  - Entering `about:config` in the address bar (if you are on Firefox)
+  - Clicking on `Accept the risk and continue`
+  - Searching for `network.dns.localDomains`
+  - Updating `network.dns.localDomains` by adding your DOMAIN_NAME
+3. Go to the following URL: `https://{DOMAIN_NAME}:443` (for example: `https://rkassel.42.fr:443`
+
+<img width="1466" height="914" alt="inception-wordpress-service" src="https://github.com/user-attachments/assets/e15aa2e2-8af5-4e08-a9e1-c6013ddd156b" />
+
 
 ## I tested this site and I'm happy. Now I'd like to clean it up. What do I do?
 
