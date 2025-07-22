@@ -1,4 +1,4 @@
-FROM debian:Bookworm
+FROM debian:bookworm
 
 COPY conf/setup_ftp.sh setup_ftp.sh
 

@@ -1,4 +1,4 @@
-FROM debian:Bookworm
+FROM debian:bookworm
 
 COPY conf/setup_grafana.sh setup_grafana.sh
 COPY conf/default_datasources.yaml /usr/share/grafana/conf/provisioning/datasources/default.yaml
