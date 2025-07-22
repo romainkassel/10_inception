@@ -1,4 +1,6 @@
-# Project #11 - Inception
+# 10_inception
+
+## Project overview
 
 This project aimed to broaden my knowledge of system administration by using Docker.
 
@@ -16,42 +18,54 @@ I also had the opportunity to set up 5 extra services as bonuses:
 - Adminer, a minimalist database management tool included in a single PHP file
 - Grafana, an open source analytics and monitoring solution plugged with Redis service and MariaDB database
 
-## Prerequisites
+## How to use this repository?
 
-Before running the "Make" command, you have to include extra content.
+### Recommended Operating System (OS)
 
-For security and confidentiality purposes, these informations can't be uploaded online.
+I recommand to use a Linux distribution such as:
 
-### Passwords
+- Latest stable version (LTS) of Ubuntu
+- Latest stable version (LTS) of Debian
 
-First, you have to insert a "secrets" folder at the root of the repository.
+### Prerequisites
 
-It has to include the following txt files with your own passwords:
-- db_password.txt
-- db_root_password.txt
-- ftp_user_password.txt
-- grafana_user_password.txt
-- wp_admin_password.txt
-- wp_user_password.txt
+This project is using Docker.
+In order to follow the steps below, you have to install Docker packages first.
 
-### Environment variables
+### Steps to follow
 
-You also have to include a ".env" file at the root of the "srcs" folder.
+1. Go to the directory where you want to clone the directory: `cd path/of/repository/`
+2. Clone this repository: `git clone git@github.com:romainkassel/10_inception.git`
+3. Enter into cloned repository: `cd 10_inception`
+4. If you have VS Code installed, open it: `code .`
+5. At the root of this repository, rename the `secrets.example` folder to `secrets`: `mv secrets.example secrets`
+6. Set a custom password within each `.txt` file included within this folder (it will be useful to access different services)
+7. Within the folder `srcs/`, rename rename the `.env.example` file to `.env`: `mv srcs/.env.example srcs/.env`
+8. Associate a value to each environment variable listed in the .env file
 
-This file should include the following variables (without bullet points):
-- #GLOBAL
-- LOGIN=yourcontent
-- DOMAIN_NAME=yourcontent
-- #MYSQL SETUP
-- MYSQL_USER=yourcontent
-- MYSQL_DATABASE=yourcontent
-- #WORDPRESS SETUP
-- DB_HOST=mariadb:3306
-- ADMIN_USER=yourcontent
-- ADMIN_EMAIL=yourcontent
-- USER_USER=yourcontent
-- USER_EMAIL=yourcontent
-- #FTP
-- FTP_USER=yourcontent
-- #GRAFANA
-- GRAFANA_USER=yourcontent
+> [!NOTE]
+> You find your `LOGIN` by running `echo $USER` in your terminal<br />
+> If you have any trouble at this step, please contact me!
+
+7. Still at the root of the repository, launch the project's build: `make`
+8. Once the project has been built and services started, you should see something like this in your console:
+
+<img width="609" alt="console_ft_transcendence_ecole_42" src="https://github.com/user-attachments/assets/15d7f571-553d-4ba2-aa9c-99670efd1af6" />
+
+9. Now you can open your favorite browser and go the following URL: `https://localhost:8080`
+
+> [!NOTE]
+> You are warned that the site is not secure and it is true<br/>
+> We used the HTTPS protocol for this website and, as a student project, we have not submitted the SSL certificates for validation by an official authority<br/>
+> You can trust us and agree to continue browsing our website despite this warning!
+
+10. Here you go! If everything went smoothly, the site should be displayed and you can start exploring.
+
+<img width="1470" alt="page_login_ft_transcendence_ecole_42" src="https://github.com/user-attachments/assets/e958a5b3-6e7d-473c-950d-3c1559b810b2" />
+
+## I tested this site and I'm happy. Now I'd like to clean it up. What do I do?
+
+1. In your terminal, stop Docker services by clicking on `CTRL + C`
+2. Run the following command to remove everything (containers, images and volumes): `make fclean`
+3. Go outside of the repository: `cd ..`
+4. Remove the repository: `rm -rf 10_inception`
