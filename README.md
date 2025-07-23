@@ -40,31 +40,31 @@ In order to follow the steps below, you have to install Docker packages first.
 4. If you have VS Code installed, open it: `code .`
 5. At the root of this repository, rename the `secrets.example` folder to `secrets`: `mv secrets.example secrets`
 6. Set a custom password within each `.txt` file included within this folder (it will be useful to access different services)
-7. Within the folder `srcs/`, rename rename the `.env.example` file to `.env`: `mv srcs/.env.example srcs/.env`
-8. Associate a value to each environment variable listed in the .env file
+7. Within the folder `srcs/`, rename the `.env.example` file to `.env`: `mv srcs/.env.example srcs/.env`
+8. Set a custom value for each environment variable listed in the `.env` file
 
 > [!NOTE]
-> You find your `LOGIN` by running `echo $USER` in your terminal<br />
+> You can find the value for `LOGIN` by running `echo $USER` in your terminal<br />
 > You can leave the variable `DB_HOST` as it is<br />
 > If you have any trouble at this step, please contact me!
 
-7. Still at the root of the repository, launch the project's build: `make`
-8. Once the project has been built and services started, you should see something like this in your terminal:
+9. Still at the root of the repository, launch the project's build: `make`
+10. Once the project has been built and services started, you should see something like this in your terminal:
 
 <img width="345" height="202" alt="inception-docker-build-done" src="https://github.com/user-attachments/assets/399c1d6a-9c4e-4bf4-80fa-27a06d61eaf4" />
 
-9. Here you go! All services are now running and ready to be checked.
+11. Here you go! All services are now running and ready to be checked.
 
 ## Services to access
 
 ### Wordpress
 
-Wordpress is the most popular Content Management System (CMS) and is the main service of this projet.
+Wordpress is the most popular Content Management System (CMS) and also the main service of this project.
 
 To access it, you need to:
 1. Open your favorite browser
 2. Add the DOMAIN_NAME you set up in the .env file to your browser by:
-  - Entering `about:config` in the address bar (if you are on Firefox)
+  - Entering `about:config` in the address bar (if you are using Firefox)
   - Clicking on `Accept the risk and continue`
   - Searching for `network.dns.localDomains`
   - Updating `network.dns.localDomains` by adding your DOMAIN_NAME
@@ -81,13 +81,13 @@ To access it, you need to:
 
 Redis is a tool that allows to cache queries made to the database. Data is stored in memory, which helps optimise application performance.
 
-To see Redis in action, you need first to go to the Worpress administration login page: https://{DOMAIN_NAME}/wp-admin/ (for example: `https://rkassel.42.fr/wp-admin/`)
+To see Redis in action, you need first to go to the Wordpress administration login page: `https://{DOMAIN_NAME}/wp-admin/` (for example: `https://rkassel.42.fr/wp-admin/`)
 
 Credentials are:
 - Username or Email Address: value of `ADMIN_USER` from the .env file
 - Password: content from `secrets/wp_admin_password.txt`
 
-Once on the administration, go to `Settings` > `Redis` and the `Metrics` tab to see data
+Once on the administration, go to `Settings` > `Redis` and the `Metrics` tab to see data (you need clicks and time to see something)
 
 <img width="2940" height="1670" alt="inception-docker-redis-cache-container-wordpress" src="https://github.com/user-attachments/assets/df9fabe8-ba60-4a98-b7e8-bee5b80a5447" />
 
@@ -106,14 +106,15 @@ Go to the following URL: `https://{DOMAIN_NAME}/adminer` (for instance: `https:/
 To log in, you can use the following credentials:
 - System: `MySQL`
 - Server: `mariadb:3306`
-- User: value of `GRAFANA_USER` from the .env file
+- User: value of `MYSQL_USER` from the .env file
 - Password: content from `secrets/db_password.txt`
 - Database: value of `MYSQL_DATABASE` from the .env file
 
 ### Grafana
 
 Grafana is a monitoring and observability tool.
-For this project, data sources come from Redis cache and MariaDB.
+
+For this project, data sources come from Redis cache and MariaDB containers.
 
 Go to following URL: `https://{DOMAIN_NAME}/grafana/login` (for instance: `https://rkassel.42.fr/grafana/login`)
 
@@ -129,9 +130,9 @@ To access the MariaDB database, you have 3 different choices:
 
 1. Use terminal by:
   - Entering MariaDB shell container: `docker exec -it mariadb sh`
-  - Entering the MySQL Command-Line Client: `mysql -u root -p{password}` (the password being the content from `secrets/db_root_password.txt`
+  - Entering the MySQL Command-Line Client: `mysql -u root -p{password}` (the password being the content from `secrets/db_root_password.txt`)
 
-2. Using Adminer interface (as seen above)
+2. Using the Adminer interface (as seen above)
 
 3. Using Grafana and its data source attached to MariaDB
 
@@ -143,10 +144,10 @@ For this service, I used the FTP server `vsftpd`.
 
 To test it, you can:
 1. Download and launch `FileZilla`
-2. Click on the button `Open the site manager on the top left hand corner`
+2. Click on the button `Open the site manager` on the top left hand corner
 3. Click on `New site` from the `My sites` folder
 4. Set `localhost` within the `Host` field
-5. Select the following option for `Encryption`: `Require explicit FTP over TLS
+5. Select the following option for `Encryption`: `Require explicit FTP over TLS`
 6. Set the `User` field with the value of `FTP_USER` from the .env file
 7. Click on `Connect`
 8. Fill the password with the content from `secrets/ftp_user_password.txt`
@@ -159,7 +160,7 @@ And now you can manage files related to the Wordpress repository!
 
 ## I tested this site and I'm happy. Now I'd like to clean it up. What do I do?
 
-1. In your terminal, stop Docker services by clicking on `CTRL + C`
-2. Run the following command to remove everything (containers, images and volumes): `make fclean`
+1. In your terminal, run the following command to remove everything (containers, images and volumes): `make fclean`
+2. Enter your environment password when asked
 3. Go outside of the repository: `cd ..`
 4. Remove the repository: `rm -rf 10_inception`
