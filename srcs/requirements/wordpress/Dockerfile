@@ -20,4 +20,4 @@ COPY /conf/auto_config.sh ./auto_config.sh
 RUN chmod 755 /etc/php/7.4/fpm/pool.d/wordpress_pool.conf && \
     chmod 755 auto_config.sh
 
-ENTRYPOINT ["/auto_config.sh"];
+ENTRYPOINT ["/auto_config.sh"]
