@@ -11,4 +11,4 @@ COPY conf/vsftpd.conf /etc/vsftpd.conf
 
 RUN chmod -R 777 /etc/vsftpd.conf
 
-ENTRYPOINT ["/setup_ftp.sh"];
+ENTRYPOINT ["/setup_ftp.sh"]
