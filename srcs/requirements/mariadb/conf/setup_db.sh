@@ -6,9 +6,6 @@ service mariadb start;
 DB_ROOT_PASSWORD=`cat /run/secrets/db_root_password`;
 DB_PASSWORD=`cat /run/secrets/db_password`;
 
-echo $DB_ROOT_PASSWORD;
-echo $DB_PASSWORD;
-
 mariadb -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '$DB_ROOT_PASSWORD';"
 
 mariadb -u root -p$DB_ROOT_PASSWORD -e \
