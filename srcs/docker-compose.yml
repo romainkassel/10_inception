@@ -12,7 +12,7 @@ services:
         env_file: .env
         volumes:
         - mariadb:/var/lib/mysql
-        restart: on-failure
+        restart: always
         expose:
         - "3306"
         secrets:
@@ -56,7 +56,7 @@ services:
         env_file: .env
         ports:
         - "443:443"
-        restart: on-failure
+        restart: always
         extra_hosts:
         - "${DOMAIN_NAME}:127.0.0.1"
         - "www.${DOMAIN_NAME}:127.0.0.1"
@@ -73,7 +73,7 @@ services:
         - inception
         depends_on:
         - adminer
-        restart: on-failure
+        restart: always
         expose: 
         - "9000"
         build: 
@@ -95,7 +95,7 @@ services:
         - inception
         depends_on:
         - wordpress
-        restart: on-failure
+        restart: always
         expose:
           - "6379"
         build: 
@@ -112,7 +112,7 @@ services:
         - inception
         depends_on:
         - redis
-        restart: on-failure
+        restart: always
         ports:
         - "20:20"
         - "21:21"
@@ -132,7 +132,7 @@ services:
         - inception
         depends_on:
         - ftp
-        restart: on-failure
+        restart: always
         expose:
         - "3000"
         build:
