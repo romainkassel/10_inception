@@ -9,8 +9,7 @@ chown $FTP_USER:$FTP_USER /home/$FTP_USER;
 chmod a-w /home/$FTP_USER/ftp;
 chown $FTP_USER:$FTP_USER /home/$FTP_USER/ftp/wordpress;
 
-chmod 777 /home/$FTP_USER/ftp/wordpress;
-chown -R $FTP_USER:$FTP_USER /home/$FTP_USER/ftp/wordpress;
+chmod -R 777 /home/$FTP_USER/ftp/wordpress;
 
 echo "$FTP_USER" | sudo tee -a /etc/vsftpd.userlist;
 
